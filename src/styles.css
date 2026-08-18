@@ -1,0 +1,209 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — Salutte Clinic e Estética Avançada.
+ * Base branca, azul petróleo como cor principal, detalhes champagne/dourado.
+ * Todos os valores de cor em oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.26 0.032 232);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.032 232);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.032 232);
+
+  /* azul petróleo */
+  --primary: oklch(0.42 0.062 224);
+  --primary-foreground: oklch(0.99 0.004 220);
+  --primary-deep: oklch(0.31 0.05 226);
+  --primary-soft: oklch(0.94 0.014 220);
+
+  --secondary: oklch(0.965 0.008 220);
+  --secondary-foreground: oklch(0.32 0.045 226);
+  --muted: oklch(0.968 0.006 220);
+  --muted-foreground: oklch(0.53 0.021 230);
+  --accent: oklch(0.955 0.014 218);
+  --accent-foreground: oklch(0.32 0.045 226);
+
+  /* champagne / dourado */
+  --gold: oklch(0.76 0.078 82);
+  --gold-soft: oklch(0.93 0.035 88);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.918 0.008 225);
+  --input: oklch(0.918 0.008 225);
+  --ring: oklch(0.42 0.062 224);
+
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.26 0.032 232);
+  --sidebar-primary: oklch(0.42 0.062 224);
+  --sidebar-primary-foreground: oklch(0.99 0.004 220);
+  --sidebar-accent: oklch(0.965 0.008 220);
+  --sidebar-accent-foreground: oklch(0.32 0.045 226);
+  --sidebar-border: oklch(0.918 0.008 225);
+  --sidebar-ring: oklch(0.42 0.062 224);
+
+  --gradient-petrol: linear-gradient(
+    135deg,
+    var(--primary-deep),
+    var(--primary)
+  );
+  --gradient-veil: linear-gradient(
+    180deg,
+    oklch(1 0 0),
+    oklch(0.978 0.008 220)
+  );
+  --shadow-soft: 0 1px 2px oklch(0.42 0.062 224 / 6%),
+    0 18px 40px -24px oklch(0.42 0.062 224 / 22%);
+  --shadow-lift: 0 2px 6px oklch(0.42 0.062 224 / 8%),
+    0 28px 60px -28px oklch(0.42 0.062 224 / 30%);
+  --transition-smooth: 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--gold-soft);
+    color: var(--primary-deep);
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@utility surface-veil {
+  background: var(--gradient-veil);
+}
+
+@utility surface-petrol {
+  background: var(--gradient-petrol);
+  color: var(--primary-foreground);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility gold-rule {
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--transition-smooth),
+    transform var(--transition-smooth);
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
